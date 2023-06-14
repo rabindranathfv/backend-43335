@@ -1,0 +1,14 @@
+version: '3.0'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo_pract1
+    ports:
+      - 27017:27017
+    volumes:
+      - mongopract:/data/configdb
+      - mongopract:/data/db
+
+volumes:
+  mongopract: {}
