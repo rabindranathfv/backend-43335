@@ -1,0 +1,16 @@
+version: "3.0"
+
+# Services to run
+services:
+  mongo_avanzado: # name of BD service
+    image: mongo
+    container_name: mongo_avanzado_p1
+    ports:
+    # puerto host:puerto del contenedor
+      - 27017:27017
+    volumes:
+      - mongoavanzadop1:/data/configdb
+      - mongoavanzadop1:/data/db
+
+volumes:
+  mongoavanzadop1: {}

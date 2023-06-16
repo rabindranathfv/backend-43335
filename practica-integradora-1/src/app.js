@@ -33,7 +33,7 @@ class App {
   }
 
   async connectDB() {
-    await mongoDBConnection()
+    await mongoDBConnection();
   }
 
   initializeMiddlewares() {
