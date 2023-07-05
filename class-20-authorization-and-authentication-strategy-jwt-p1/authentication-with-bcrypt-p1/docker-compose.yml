@@ -1,0 +1,16 @@
+version: "3.0"
+
+# Services to run
+services:
+  mongo_login: # name of BD service
+    image: mongo
+    container_name: mongo_db_cred_encrypt
+    ports:
+      - 27017:27017
+    volumes:
+      - mongoencry:/data/configdb
+      - mongoencry:/data/db
+    restart: always
+
+volumes:
+  mongoencry:
