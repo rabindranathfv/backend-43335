@@ -1,0 +1,16 @@
+version: "3.0"
+
+# Services to run
+services:
+  mongo_strategy: # name of BD service
+    image: mongo
+    container_name: mongo_db_practica_integradora_2
+    ports:
+      - 27017:27017
+    volumes:
+      - mongoapracticaint2:/data/configdb
+      - mongoapracticaint2:/data/db
+    # restart: always
+
+volumes:
+  mongoapracticaint2:
