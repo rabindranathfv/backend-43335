@@ -1,0 +1,16 @@
+version: "3.0"
+
+# Services to run
+services:
+  mongo_layer_architecture: # name of BD service
+    image: mongo
+    container_name: mongo_layer_arch_2
+    ports:
+      - 27017:27017
+    volumes:
+      - mongolayerarch2:/data/configdb
+      - mongolayerarch2:/data/db
+    # restart: always
+
+volumes:
+  mongolayerarch2:
