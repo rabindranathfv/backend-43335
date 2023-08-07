@@ -1,0 +1,16 @@
+version: "3.0"
+
+# Services to run
+services:
+  mongo_strategy: # name of BD service
+    image: mongo
+    container_name: mongo_after_class3
+    ports:
+      - 27017:27017
+    volumes:
+      - mongoafter3:/data/configdb
+      - mongoafter3:/data/db
+    # restart: always
+
+volumes:
+  mongoafter3:
