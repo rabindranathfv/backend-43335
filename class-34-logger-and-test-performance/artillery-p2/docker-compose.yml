@@ -2,15 +2,15 @@ version: "3.0"
 
 # Services to run
 services:
-  mongo_strategy: # name of BD service
+  mongo: # name of BD service
     image: mongo
-    container_name: node_email
+    container_name: mongo_db_artillery
     ports:
       - 27017:27017
     volumes:
-      - mongonodemail:/data/configdb
-      - mongonodemail:/data/db
-    # restart: always
+      - mongoartillery:/data/configdb
+      - mongoartillery:/data/db
+    restart: always
 
 networks:
   nodejs-network:
@@ -18,4 +18,4 @@ networks:
     driver: bridge
 
 volumes:
-  mongonodemail:
+  mongoartillery:

@@ -1,0 +1,16 @@
+version: "3.0"
+
+# Services to run
+services:
+  express_loggers: # name of BD service
+    image: mongo
+    container_name: express_loggers_containers
+    ports:
+      - 27017:27017
+    volumes:
+      - loggervol:/data/configdb
+      - loggervol:/data/db
+    # restart: always
+
+volumes:
+  loggervol:
