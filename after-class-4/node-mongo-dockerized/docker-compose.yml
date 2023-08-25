@@ -1,0 +1,27 @@
+version: "3.0"
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongo_db_container
+    ports:
+      # local --> contenedor
+      - 27017:27027
+    restart: always
+    volumes:
+      - mongo_afer_4:/data/configdb
+      - mongo_afer_4:/data/mongo_db_container
+
+  api:
+    build: .
+    container_name: api_container
+    ports:
+      - 6000:6000
+    depends_on:
+      - mongodb
+    restart: always
+    volumes:
+      - .:/usr/src/app
+
+volumes:
+  mongo_afer_4: {}

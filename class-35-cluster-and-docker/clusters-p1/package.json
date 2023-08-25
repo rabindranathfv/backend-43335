@@ -1,0 +1,42 @@
+{
+  "name": "express_mongo_p1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "cross-env NODE_ENV=development nodemon ./src/app",
+    "start:prod": "cross-env NODE_ENV=production nodemon ./src/app",
+    "test:performance": "artillery quick --count 20 --num 20 http://localhost:5000/endpoint -o easy-endpoint.json",
+    "test:performance:heavy": "artillery quick --count 10 --num 10 http://localhost:5000/complejo -o complex-endpoint.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "cluster": "^0.7.7",
+    "colors": "^1.4.0",
+    "connect-mongo": "^4.6.0",
+    "cookie-parser": "^1.4.6",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-compression": "^1.0.2",
+    "express-routemap": "^1.6.0",
+    "mongoose": "^6.10.3",
+    "mongoose-paginate-v2": "^1.7.1",
+    "os": "^0.1.2",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "winston": "^3.8.2",
+    "zlib": "^1.0.5"
+  },
+  "devDependencies": {
+    "artillery": "^2.0.0-31",
+    "@faker-js/faker": "^7.6.0",
+    "faker": "^6.6.6",
+    "nodemon": "^2.0.20"
+  }
+}

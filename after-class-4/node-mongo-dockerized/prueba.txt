@@ -1,0 +1,1 @@
+archivo que voy a ignorar en el docker ignore
