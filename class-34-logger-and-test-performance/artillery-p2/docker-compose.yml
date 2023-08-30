@@ -10,7 +10,7 @@ services:
     volumes:
       - mongoartillery:/data/configdb
       - mongoartillery:/data/db
-    restart: always
+    # restart: always
 
 networks:
   nodejs-network:
