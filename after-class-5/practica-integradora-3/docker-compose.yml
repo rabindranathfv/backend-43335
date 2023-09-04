@@ -1,0 +1,28 @@
+version: "3.0"
+
+services:
+  # nombre del servicio
+  mongodb:
+    image: mongo
+    container_name: mongo_db_container_after5_kb
+    ports:
+      # local --> contenedor
+      - 27017:27017
+    # restart: always
+    volumes:
+      - mongodockerafter5kb:/data/configdb
+      - mongodockerafter5kb:/data/db
+
+  api_library:
+    build: .
+    container_name: api_container_after5_kb
+    ports:
+      # local --> contenedor
+      - 6000:6000
+    depends_on:
+      - mongodb
+    # restart: always
+    # opcional ya que ayuda a desarrollar con el docker compose ejecutandose
+
+volumes:
+  mongodockerafter5kb:

@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubeservice-api-library
+spec:
+  selector:
+    app: nodemongoafter5library
+  ports:
+    - port: 60
+      targetPort: 6000
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubedeploy-api-library
+spec:
+  replicas: 7
+  selector:
+    matchLabels:
+      app: nodemongoafter5library
+  template:
+    metadata:
+      labels:
+        app: nodemongoafter5library
+    spec:
+      containers:
+        - name: kubecontainer-api-library
+          image: rabindranathfv/practica-integradora-3-api_library:1.0.0
+          ports:
+            - containerPort: 6000
+          env:
+            - name: PORT
+              value: "6000"
+            - name: NODE_ENV
+              value: production
+            - name: DB_HOST
+              value: mongodb
+          imagePullPolicy: Always
