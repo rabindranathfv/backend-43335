@@ -3,6 +3,10 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import displayRoutes from "express-routemap";
 import cors from "cors";
+
+import swaggerJSDoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
+
 import booksRoutes from "./routes/book.routes.js";
 import libraryRoutes from "./routes/library.routes.js";
 import {
@@ -13,6 +17,7 @@ import {
   PORT,
   MONGO_URI,
 } from "./config/config.js";
+import { swaggerOpts } from "./config/swagger.config.js";
 
 const app = express();
 
@@ -21,7 +26,7 @@ const DB_HOST_ENV = DB_HOST || "localhost";
 const DB_PORT = 27017;
 const DB_NAME = "MongoDBPractice";
 
-const MONGO_URL =
+export const MONGO_URL =
   NODE_ENV === "production"
     ? `${MONGO_URI}${DB_NAME}`
     : `mongodb://${DB_HOST_ENV}:${DB_PORT}/${DB_NAME}`;
@@ -40,17 +45,20 @@ app.use(
 const connection = mongoose
   .connect(MONGO_URL)
   .then((conn) => {
-    console.log(`🚀 ~ file: app.js:18 ~ CONECT WITH MONGO URL`);
+    console.log(`🚀 ~ file: app.js:47 ~ CONECT WITH MONGO URL`);
   })
   .catch((err) => {
-    console.log("🚀 ~ file: app.js:20 ~ err:", err);
+    console.log("🚀 ~ file: app.js:50 ~ err:", err);
   });
+
+const specs = swaggerJSDoc(swaggerOpts);
 
 app.use("/api/alive", (req, res) => {
   return res.json({ message: `API ALIVE....` });
 });
 app.use("/api/books", booksRoutes);
 app.use("/api/libraries", libraryRoutes);
+app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.listen(PORT_APP, () => {
   displayRoutes(app);

@@ -1,0 +1,7 @@
+{
+  "testRegex": "((\\.|/*.)(test))\\.js?$",
+  "transform": {
+    "^.+\\.jsx?$": "babel-jest"
+  },
+  "testTimeout": 25000
+}

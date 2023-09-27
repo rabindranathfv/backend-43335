@@ -55,11 +55,15 @@ export const updateLibraryById = async (req, res) => {
   try {
     const { lid } = req.params;
     const libBody = req.body;
+    console.log(
+      "🚀 ~ file: library.controller.js:58 ~ updateLibraryById ~ libBody:",
+      libBody
+    );
     const libraryUpd = await libraryService.updateLibraryById(lid, libBody);
     // TODO: SI FALLA MANDAR UN ERROR
 
     return res.json({
-      message: `updateLibraryById OK with id: ${lib}`,
+      message: `updateLibraryById OK with id: ${lid}`,
       library: libraryUpd,
     });
   } catch (error) {
