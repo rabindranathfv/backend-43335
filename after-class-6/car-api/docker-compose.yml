@@ -1,0 +1,14 @@
+version: '3.0'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo_nest_car_container
+    ports:
+      - 27017:27017
+    volumes:
+      - mongonestapi:/data/configdb
+      - mongonestapi:/data/db
+
+volumes:
+  mongonestapi:
